@@ -59,8 +59,20 @@ function reduce(array, f, acc) {
 //wordLengths("hello its me") // [5,3,2]
 
 function wordLengths(str) {
-    // TODO: your code here 
-}
+    // TODO: your code here  function wordLengths(str) {
+
+  
+
+    var array = str.split(" "); 
+
+    return map (array ,function(element) {
+
+        return element.length ;
+      })  
+
+    }
+
+
 
 //=============================================================================
 /*                                  Q2                                    */
@@ -71,9 +83,14 @@ function wordLengths(str) {
 // countOccurrences("hello", "l"); // 2
 // countOccurrences("hello, world!", "l"); // 3
 
-function countOccurrences(string, character) {
-    // your code is here
-}
+function countOccurrences(string, Char) {
+  return reduce(string, function(acc, element){ 
+          if(Char === element){ 
+              return acc + 1 
+          } 
+          return acc 
+      }, 0); 
+  }
 
 //=============================================================================
 /*                                  Q3                                    */
@@ -82,10 +99,12 @@ function countOccurrences(string, character) {
 //with only the words of length that are longer than 3.
 //solve it using the most appropriate helper functions(reduce,each,map,filter).
 // wordsLongerThanThree("Hello Mad World") //["Hello", "World"]
-
-function wordsLongerThanThree(str) {
-    // TODO: your code here 
+function wordsLongerThanThree(str) { 
+  return filter(str, function(){ 
+      return str.length>3 
+  });
 }
+
 
 //=============================================================================
 /*                                  Q4                                        */
@@ -98,10 +117,21 @@ function wordsLongerThanThree(str) {
 //repeatString('dog', 2); // => 'dog' + 'dog' => 'dogdog' 
 //repeatString('dog', 3); // => 'dog' + 'dog' + 'dog' => 'dogdogdog'
 
-function repeatString(str, count) { 
- // TODO: your code here 
-} 
  
+function repeatString(str, count) { 
+
+  if (count === 0 ) {
+
+
+    return ""
+  }
+
+  else if (count > 0) {
+
+    return str + repeatString(str, count-1) 
+  }
+}
+
 
 //=============================================================================
 /*                                  Q5                                       */
@@ -129,6 +159,45 @@ function repeatString(str, count) {
 // pizza.eatSlice();
 
 // Write your code here .....
+function makePizza(crust, size, numberOfSlice) {
+  var curst = crust
+  var size = size
+  var ingredients =""
+  var numberOfSlice = numberOfSlice
+
+  
+   return {
+    addIngredients : function(str){
+
+      ingredients = ingredients +str+","
+
+    },
+    displayIngredaints: function(){
+
+       return " The ingredients are : "+ingredients
+    },
+    bakePizza : function(){
+
+       setTimeout(function(){ console.log( "Your "+crust+" "+size+" "+numberOfSlice+" slice pizza is done")},2000)
+
+    },
+    eatSlice : function(){
+
+      if(numberOfSlice > 0 ){
+
+        numberOfSlice--
+      }
+      else{
+
+        return "Sorry no more pizza for you"
+      }
+
+    }
+
+   }
+}
+
+
 
 //=============================================================================
 /*                                  Q6                                      */
@@ -227,3 +296,6 @@ d- Decrement the number of "unread" books
 
 
 
+//  1 we use closur to use less space in the hard disk and shorter ConvolverNode
+//  2_ this keyword refers to an object allready has ben set as a var 
+//  3_ jQuery is a librery of js with  build in function 
